@@ -73,3 +73,15 @@ gdrive_shared*/
 # ctag generated file
 tags
 .tags
+
+# Misc
+*.orig
+.DS_Store
+*.rej
+*~
+.idea
+.vscode
+/.project
+/.settings
+/.pydevproject
+/.settings
