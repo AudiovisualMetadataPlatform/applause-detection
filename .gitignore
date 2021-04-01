@@ -79,6 +79,7 @@ tags
 .DS_Store
 *.rej
 *~
+*.sif
 .idea
 .vscode
 /.project

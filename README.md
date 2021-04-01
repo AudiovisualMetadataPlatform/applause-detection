@@ -63,3 +63,18 @@ The processed results are stored as JSON file in the target directory named afte
     }
 ]
 ```
+
+# Run as Singularity
+
+To build:
+```
+time singularity build --fakeroot applause-detection-singularity.sif Singularity.recipe
+```
+
+To run:
+```
+./applause-detection-singularity.sif <audio file>  <output json>
+```
+
+Both the audio file and the output file should be either in the user's home directory or /tmp.  Other options can be handled by using run-time binding.
+

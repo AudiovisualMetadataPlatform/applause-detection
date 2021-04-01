@@ -80,12 +80,14 @@ if __name__ == '__main__':
         print("============")
 
     if args.segment:
-        for wav in reader.read_wavs(args.segment[1], file_ext=['mp3', 'wav', 'mp4']):
+        # include 'dat' file extension for Galaxy data files
+        for wav in reader.read_wavs(args.segment[1], file_ext=['mp3', 'wav', 'mp4', 'dat']):
             start = time.perf_counter()
             model = classifier.load_model(args.segment[0])
             predicted = classifier.predict_pipeline(wav, model)
             smoothed = smoothing.smooth(predicted, int(args.threshold), args.binary)
+            amp_segment = AmpSegment(wav, smoothed)
 
             if args.out:
-                writer.save_json(smoothed, wav, args.out)
+                writer.save_json(amp_segment, wav, args.out)
             print(f"Finished {wav} in {time.perf_counter()-start:0.4f} seconds")
