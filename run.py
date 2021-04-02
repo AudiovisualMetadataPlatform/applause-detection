@@ -86,8 +86,8 @@ if __name__ == '__main__':
             model = classifier.load_model(args.segment[0])
             predicted = classifier.predict_pipeline(wav, model)
             smoothed = smoothing.smooth(predicted, int(args.threshold), args.binary)
-            amp_segment = AmpSegment(wav, smoothed)
+            amp_segments = AmpSegment(wav, smoothed)
 
             if args.out:
-                writer.save_json(amp_segment, wav, args.out)
+                writer.save_json(amp_segments, wav, args.out)
             print(f"Finished {wav} in {time.perf_counter()-start:0.4f} seconds")

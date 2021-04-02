@@ -1,19 +1,13 @@
 Bootstrap: docker
 From: ubuntu
 
-%help
-Applause Detection using Tensorflow, integrated into AMP/Galaxy as Singularity
-
-%labels
-Version 0.1
-
-%environment
-
 %setup
 
 %files
     run.py /usr/local/bin
     amp_segment.py    
+
+%environment
 
 %post
     # install updates & dependencies
@@ -23,3 +17,16 @@ Version 0.1
     
 %runscript
     /usr/local/bin/run.py -s pretrained/applause-binary-20210203 "$1" -o "$1" -T "$2" -b
+
+%startscript
+
+%test
+
+%labels
+	Author yingfeng@iu.edu
+	Version 0.1
+    
+%help
+	Applause Detection using Tensorflow, integrated into AMP/Galaxy as Singularity
+
+    
