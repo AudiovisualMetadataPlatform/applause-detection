@@ -2,6 +2,7 @@ import reader, feature, classifier, smoothing, writer
 import sys
 import os
 import time
+from amp_segment import AmpSegment 
 
 if __name__ == '__main__':
 
