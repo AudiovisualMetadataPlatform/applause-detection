@@ -18,8 +18,8 @@ From: ubuntu
 	
 %post
     # install updates & dependencies
-    apt-get update -qq
-    apt-get install -qq -y python libatlas-base-dev software-properties-common curl gawk zip  \
+    apt-get update && TZ="America/New_York" DEBIAN_FRONTEND=noninteractive && apt-get install tzdata
+    apt-get install -qq -y libatlas-base-dev software-properties-common curl gawk zip  \
         libperl4-corelibs-perl libjson-perl libsox-dev nano rsync cmake irstlm
 
     # install python3, ffmpeg
