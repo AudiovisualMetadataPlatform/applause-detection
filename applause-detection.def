@@ -4,7 +4,13 @@ From: ubuntu
 %setup
 
 %files 
-
+    README.md /applause/README.md
+    pretrained /applause
+    utilities /applause
+    *.py /applause
+    *.tsv /applause
+    *.txt /applause
+    
 %environment
 	export SHELL=/bin/bash
 	export LANGUAGE=en_US
@@ -13,17 +19,14 @@ From: ubuntu
 %post
     # install updates & dependencies
     apt-get update -qq
-    apt-get install -qq -y  python libatlas-base-dev software-properties-common curl gawk zip  \
-        libperl4-corelibs-perl libjson-perl  libsox-dev nano rsync cmake irstlm
+    apt-get install -qq -y python libatlas-base-dev software-properties-common curl gawk zip  \
+        libperl4-corelibs-perl libjson-perl libsox-dev nano rsync cmake irstlm
 
     # install python3, ffmpeg
     apt-get install -qq -y ffmpeg python3 python3-pip
     
     # install applause-detection dependencies
     pip3 install -r requirements.txt
-    
-    # copy applause-detection files to root
-    cp -r * /
     
 %runscript
     python3 run.py -s pretrained/applause-binary-20210203 "$1" -o "$1" -T "$2" -b
