@@ -63,3 +63,23 @@ The processed results are stored as JSON file in the target directory named afte
     }
 ]
 ```
+
+## Run as Singularity
+
+To build as root:
+```
+sudo singularity build applause-detection.sif applause-detection.def
+```
+
+To build as non-admin:
+```
+singularity build --fakeroot applause-detection.sif applause-detection.def
+```
+
+To run:
+```
+./applause-detection.sif <input_output_tmp_dir> <min_segment_duration>
+```
+
+The input audio file should have been copied to the temporary directory specified above, and the output file will be generated in the same location with .json extension added to the input filename.
+
